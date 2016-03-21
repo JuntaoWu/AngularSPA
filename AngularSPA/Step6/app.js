@@ -1,7 +1,7 @@
 ﻿
 var mainApp = angular.module("mainApp", ["ngRoute", "cardsControllers", "cardsServices"]);
 
-mainApp.config("$routeProvider", function ($routeProvider) {
+mainApp.config(["$routeProvider", function ($routeProvider) {
     $routeProvider.when("/cards", {
         templateUrl: "Views/cards/list.html",
         controller: "cardsListController"
@@ -11,4 +11,4 @@ mainApp.config("$routeProvider", function ($routeProvider) {
     }).otherwise({
         redirectTo: "/cards"
     });
-});
+}]);
