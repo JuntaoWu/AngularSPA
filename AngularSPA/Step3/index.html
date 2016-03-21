@@ -1,0 +1,20 @@
+﻿<!DOCTYPE html>
+<html ng-app="mainApp">
+<head>
+    <title>Cards</title>
+    <meta charset="utf-8" />
+    <link href="../Content/bootstrap.css" rel="stylesheet" />
+    <script src="../Scripts/jquery-1.10.2.js"></script>
+    <script src="../Scripts/bootstrap.js"></script>
+    <script src="../Scripts/angular.js"></script>
+    <script src="app.js"></script>
+    <script src="cardsControllers.js"></script>
+</head>
+<body>
+    <div id="divCardsList" ng-controller="cardsListController" class="col-sm-4">
+        <div class="list-group">
+            <a ng-repeat="card in cards" class="list-group-item" href="#">Card {{card.id}}</a>
+        </div>
+    </div>
+</body>
+</html>
