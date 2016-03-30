@@ -224,6 +224,8 @@
     <Content Include="Scripts\angular-scenario.js" />
     <Content Include="Scripts\angular-touch.js" />
     <Content Include="Scripts\angular-touch.min.js" />
+    <Content Include="Scripts\angular-ui-router.js" />
+    <Content Include="Scripts\angular-ui-router.min.js" />
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\angular.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -1032,6 +1034,13 @@
     <Content Include="Step5\cardsFilters.js" />
     <Content Include="Step5\cardsServices.js" />
     <Content Include="Step5\index.html" />
+    <Content Include="Step7\app.js" />
+    <Content Include="Step7\cardsControllers.js" />
+    <Content Include="Step7\cardsFilters.js" />
+    <Content Include="Step7\cardsServices.js" />
+    <Content Include="Step7\index.html" />
+    <Content Include="Step7\Views\cards\list.html" />
+    <Content Include="Step7\Views\cards\show.html" />
     <Content Include="Step6\app.js" />
     <Content Include="Step6\cardsControllers.js" />
     <Content Include="Step6\cardsFilters.js" />
@@ -1059,6 +1068,7 @@
     <Content Include="Step5\all.json" />
     <Content Include="Scripts\version.json" />
     <Content Include="Step6\all.json" />
+    <Content Include="Step7\all.json" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
