@@ -1039,8 +1039,8 @@
     <Content Include="Step7\cardsFilters.js" />
     <Content Include="Step7\cardsServices.js" />
     <Content Include="Step7\index.html" />
-    <Content Include="Step7\Views\cards\list.html" />
-    <Content Include="Step7\Views\cards\show.html" />
+    <Content Include="Step7\Views\cards\index.html" />
+    <Content Include="Step7\Views\cards\detail.html" />
     <Content Include="Step6\app.js" />
     <Content Include="Step6\cardsControllers.js" />
     <Content Include="Step6\cardsFilters.js" />
