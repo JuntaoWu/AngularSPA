@@ -1,0 +1,25 @@
+<!doctype html>
+<html ng-app="myApp">
+<head>
+    <link href="../../Content/bootstrap.css" rel="stylesheet" />
+    <script src="../../Scripts/jquery-1.10.2.js"></script>
+    <script src="../../Scripts/bootstrap.js"></script>
+    <script src="../../Scripts/angular.js"></script>
+</head>
+<body>
+
+  {{ someProperty }}
+  <button ng-click="someAction()">Communicate</button>
+
+  <script>
+    angular.module('myApp', [])
+    .run(function($rootScope) {
+      $rootScope.someProperty = 'hello computer';
+      $rootScope.someAction = function() {
+        $rootScope.someProperty = 'hello human';
+      };
+    });
+  </script>
+
+</body>
+</html>

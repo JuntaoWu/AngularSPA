@@ -1,0 +1,30 @@
+<!doctype html>
+<html ng-app="myApp">
+<head>
+    <link href="../../Content/bootstrap.css" rel="stylesheet" />
+    <script src="../../Scripts/jquery-1.10.2.js"></script>
+    <script src="../../Scripts/bootstrap.js"></script>
+    <script src="../../Scripts/angular.js"></script>
+</head>
+<body>
+
+  <label>someProperty = {{someProperty}}</label>
+  <input type="checkbox"
+         ng-checked="someProperty"
+         ng-init="someProperty = true"
+         ng-model="someProperty">
+
+  <br>
+
+  <label>anotherProperty = {{anotherProperty}}</label>
+  <input type="checkbox"
+         ng-checked="anotherProperty"
+         ng-init="anotherProperty = false"
+         ng-model="anotherProperty">
+
+  <script>
+    angular.module('myApp', [])
+  </script>
+
+</body>
+</html>

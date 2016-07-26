@@ -1,0 +1,83 @@
+﻿<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+    <meta charset="utf-8" />
+    <link href="../../Content/bootstrap.css" rel="stylesheet" />
+    <script src="../../Scripts/jquery-1.10.2.js"></script>
+    <script src="../../Scripts/bootstrap.js"></script>
+    <script src="../../Scripts/angular.js"></script>
+    <script src="../../Scripts/angular-resource.js"></script>
+    <script src="../../Scripts/angular-route.js"></script>
+    <script src="../../Scripts/angular-animate.js"></script>
+    <script>
+        angular.module('myApp', ['ngRoute'])
+        .config(['$routeProvider', function ($routeProvider) {
+            $routeProvider
+                .when('/', {
+                        controller: 'HomeController',
+                        template: '\
+                            <a href="#inbox/ari">View Your Inbox</a>\
+                            '
+                        })
+                .when('/inbox/:name', {
+                        controller: 'InboxController',
+                        template: '\
+                            <h1>Welcome to your inbox, {{ name }}</h1>\
+                            <a href="#/">Back</a>\
+                            '
+                        })
+                .otherwise({ redirectTo: '/' });
+        }])
+
+        .controller('HomeController', function ($scope) {
+            // define controller to prevent console error
+        })
+
+        .controller('InboxController', function ($scope, $routeParams, $location) {
+                $scope.name = $routeParams.name;
+        });
+    </script>
+    <style>
+        body {
+            background-color: #fff;
+            border-top: 5px solid #3399cc;
+        }
+
+        html {
+          background: #fff;
+        }
+
+        .row {
+          border: 0px solid green;
+        }
+
+        header {
+          background: #f2f2f2;
+          min-height: 100px;
+          border-bottom: 8px solid #3366cc;
+          padding: 25px 0;
+          font-size: 100%;
+          font-family: 'Open Sans', 'PT Sans', sans-serif;
+
+        }
+
+        header h1 {
+          font-size: 125%;
+          font-family: 'Open Sans', 'PT Sans', sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Header</h1>
+    </header>
+
+    <div class="content">
+        <div ng-view></div>
+    </div>
+
+    <footer>
+        <h5>Footer</h5>
+    </footer>
+</body>
+</html>

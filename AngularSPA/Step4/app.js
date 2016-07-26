@@ -1,2 +1,2 @@
 ﻿
-var mainApp = angular.module("mainApp", ["cardsControllers", "cardsServices"]);
+var mainApp = angular.module("mainApp", ["cardsControllers"]);

@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <link href="../../Content/bootstrap.css" rel="stylesheet" />
+    <script src="../../Scripts/jquery-1.10.2.js"></script>
+    <script src="../../Scripts/bootstrap.js"></script>
+    <script src="../../Scripts/angular.js"></script>
+    <script>
+        var app = angular.module('myApp', []);
+        app.controller('ParentController', function ($scope) {
+            $scope.person = { greeted: false };
+        })
+        app.controller('ChildController', function ($scope) {
+            $scope.sayHello = function () {
+                $scope.person.name = "Ari Lerner";
+                $scope.person.greeted = true;
+            }
+        })
+    </script>
+</head>
+<body ng-app="myApp">
+    <div ng-controller="ParentController">
+        <div ng-controller="ChildController">
+            <a href="#" ng-click="sayHello()">Say hello</a>
+        </div>
+        {{ person }}
+    </div>
+
+</body>
+</html>

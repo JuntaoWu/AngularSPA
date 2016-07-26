@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <link href="../../Content/bootstrap.css" rel="stylesheet" />
+    <script src="../../Scripts/jquery-1.10.2.js"></script>
+    <script src="../../Scripts/bootstrap.js"></script>
+    <script src="../../Scripts/angular.js"></script>
+    <script>
+        var app = angular.module('myApp', []);
+        app.controller('MyController', ['$scope',function ($scope) {
+            $scope.person = {
+                name: "Ari Lerner"
+            };
+        }]);
+    </script>
+</head>
+<body ng-app="myApp">
+    <div ng-controller="MyController">
+        <h1>{{ person }}</h1>
+        and their name:
+        <h2>{{ person.name }}</h2>
+    </div>
+</body>
+</html>

@@ -1,0 +1,23 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <link href="../../Content/bootstrap.css" rel="stylesheet" />
+    <script src="../../Scripts/jquery-1.10.2.js"></script>
+    <script src="../../Scripts/bootstrap.js"></script>
+    <script src="../../Scripts/angular.js"></script>
+    <script>
+        var myApp = angular.module("myApp", []);
+        myApp.controller("MyController", ['$scope', function($scope) {
+            $scope.movie = "Duck Tails";
+        }]);
+    </script>
+</head>
+<body>
+    <div ng-app="myApp">
+        <div ng-controller="MyController">
+            My favorite childhood movie: {{ movie }}
+        </div>
+    </div>
+</body>
+</html>

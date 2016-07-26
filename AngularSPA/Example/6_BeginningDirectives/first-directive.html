@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+    <meta charset="utf-8" />
+    <link href="../../Content/bootstrap.css" rel="stylesheet" />
+    <script src="../../Scripts/jquery-1.10.2.js"></script>
+    <script src="../../Scripts/bootstrap.js"></script>
+    <script src="../../Scripts/angular.js"></script>
+    <script>
+        angular.module('myApp', [])
+        .directive('myDirective', function () {
+        return {
+            restrict: 'A',
+            replace: true,
+            scope: {
+                myUrl: '=someAttr',
+                myLinkText: '@'
+            },
+            template: '\
+                <div>\
+                    <label>My Url Field:</label>\
+                    <input type="text" ng-model="myUrl" />\
+                    <a href="{{myUrl}}">{{myLinkText}}</a>\
+                     </div>\
+                '
+        }
+        })
+    </script>
+</head>
+<body>
+    <label>Their URL field:</label>
+    <input type="text" ng-model="theirUrl">
+    <div my-directive
+         some-attr="theirUrl"
+         my-link-text="Click me to go to Google"></div>
+</body>
+</html>

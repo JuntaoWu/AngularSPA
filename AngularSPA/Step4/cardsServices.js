@@ -1,6 +1,6 @@
 ﻿var cardsServices = angular.module("cardsServices", ["ngResource"]);
 
-cardsServices.factory("Cards", ["$resource", function ($resource) {
+cardsServices.factory("cardsServices", ["$resource", function ($resource) {
     return $resource("all.json", {}, {
         query: { method: "Get", params: {}, isArray: true }
     });

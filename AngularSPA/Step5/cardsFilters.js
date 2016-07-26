@@ -9,7 +9,7 @@
         }
 
         return cards.filter(function (i) {
-            return i.id.toString().indexOf(query) !== -1;
+            return i.id.toString() == query
         });
     };
 });

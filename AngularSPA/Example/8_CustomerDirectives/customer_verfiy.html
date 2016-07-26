@@ -1,0 +1,119 @@
+﻿<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+    <meta charset="utf-8" />
+    <link href="../../Content/bootstrap.css" rel="stylesheet" />
+    <script src="../../Scripts/jquery-1.10.2.js"></script>
+    <script src="../../Scripts/bootstrap.js"></script>
+    <script src="../../Scripts/angular.js"></script>
+    <script>
+        var myApp = angular.module('myApp', [])
+        myApp.directive('ngSame', function () {
+            return {
+                restrict: 'A',
+                require: 'ngModel',
+                link: function (scope, element, attrs, ngModelController) {
+                    scope.$watch(attrs.ngModel, function (newValue, oldValue) {
+                        if (scope.currentUser.passwordFirst == scope.currentUser.passwordSecond) {
+                            ngModelController.$setValidity('same', true);
+                        }
+                        else {
+                            ngModelController.$setValidity('same', false);
+                        }
+                        console.log(scope.reset_password_form.$error);
+                    });
+                }
+            };
+        });
+
+        myApp.directive('ngVerify', ['$http', function ($http) {
+            return {
+                restrict: 'A',
+                require: 'ngModel',
+                link: function (scope, element, attrs, ngModelController) {
+                    scope.$watch(attrs.ngModel, function (newValue, oldValue) {
+                        $http({
+                            method:'get',
+                            url:'all.json'
+                        }).success(function (data) {
+                            if (data.username == scope.currentUser.userFullName) {
+                                ngModelController.$setValidity('verifyusername', false);
+                            } else {
+                                ngModelController.$setValidity('verifyusername', true);
+                            }
+                            console.log(scope.reset_password_form.$error);
+                        }).error(function (data) {
+
+                        })
+                    });
+                }
+            };
+        }]);
+
+        myApp.controller("resetPasswordController", ['$scope', function ($scope) {
+            $scope.currentUser = {
+                passwordFirst: "",
+                passwordSecond: "",
+                userFullName:""
+            }
+            $scope.submitPassword = function () {
+                console.log($scope.currentUser.userFullName);
+                alert("修改密码成功");
+            }
+        }])
+    </script>
+</head>
+<body ng-controller="resetPasswordController">
+    <form name="reset_password_form" class="form-horizontal" style="margin-top: 60px;">
+        <div class="form-group">
+            <label class="col-xs-3">用户名</label>
+            <div class="col-xs-8">
+                <input name="userName" class="form-control" type="text" placeholder="请输入用户名"
+                       ng-model="currentUser.userFullName"
+                       ng-verify
+                       required
+                       />
+            </div>
+        </div>
+        <div class="form-group"
+             ng-show="reset_password_form.userName.$error.verifyusername">
+            <span class="col-xs-offset-3 col-xs-8">用户名重复</span>
+        </div>
+
+        <div class="form-group">
+            <label class="col-xs-3">新密码</label>
+            <div class="col-xs-8">
+                <input name="password1" class="form-control" type="password" placeholder="请输入至少6位新密码"
+                       ng-model="currentUser.passwordFirst"
+                       required
+                       ng-minlength="6" />
+            </div>
+        </div>
+        <div class="form-group"
+             ng-show="reset_password_form.password1.$error.minlength">
+            <span class="col-xs-offset-3 col-xs-8">密码位数少于6位</span>
+        </div>
+        <div class="form-group">
+            <label class="col-xs-3">再次输入</label>
+            <div class="col-xs-8">
+                <input name="password2" class="form-control" type="password" placeholder="请再次输入新密码"
+                       ng-model="currentUser.passwordSecond"
+                       ng-same="currentUser.passwordFirst, currentUser.passwordSecond"
+                       required />
+            </div>
+        </div>
+        <div class="form-group"
+             ng-show="reset_password_form.password2.$error.same">
+            <span class="col-xs-offset-3 col-xs-8">两次密码输入不一致</span>
+        </div>
+        <div class="form-group" style="margin-top:20px; text-align: center;">
+            <button class="btn btn-primary" style="text-align: center;"
+                    ng-click="submitPassword()"
+                    ng-disabled="reset_password_form.$invalid">
+                确认修改密码
+            </button>
+        </div>
+    </form>
+
+</body>
+</html>

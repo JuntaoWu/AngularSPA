@@ -1,0 +1,22 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>HelloWord</title>
+    <meta charset="utf-8" />
+    <link href="../Content/bootstrap.css" rel="stylesheet" />
+    <script src="../Scripts/jquery-1.10.2.js"></script>
+    <script src="../Scripts/bootstrap.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#Name").keyup(function () {
+                var name = $("#Name").val();
+                $("#Hello").text("Hello" + name);
+            })
+        })
+    </script>
+</head>
+<body>
+    <input id="Name" type="text" width="100px"/>
+    <label id="Hello"></label>
+</body>
+</html>

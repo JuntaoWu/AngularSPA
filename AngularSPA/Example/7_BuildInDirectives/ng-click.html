@@ -1,0 +1,32 @@
+<!doctype html>
+<html ng-app="myApp">
+<head>
+    <link href="../../Content/bootstrap.css" rel="stylesheet" />
+    <script src="../../Scripts/jquery-1.10.2.js"></script>
+    <script src="../../Scripts/bootstrap.js"></script>
+    <script src="../../Scripts/angular.js"></script>
+</head>
+<body>
+
+  <div ng-controller="CounterController">
+    <button ng-click="count = count + 1" ng-init="count=0">
+      Increment
+    </button>
+    count: {{count}}
+
+    <button ng-click="decrement()">
+      Decrement
+    </button>
+  <div>
+
+  <script>
+    angular.module('myApp', [])
+    .controller('CounterController', function($scope) {
+      $scope.decrement = function() {
+        $scope.count = $scope.count - 1;
+      };
+    })
+  </script>
+
+</body>
+</html>
